@@ -14,6 +14,11 @@ config/name="Brick Breaker Sample"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/viewport_width=512
+window/size/viewport_height=300
+
 [dotnet]
 
 project/assembly_name="Brick Breaker Sample"
