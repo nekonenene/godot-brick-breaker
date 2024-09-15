@@ -1,3 +1,15 @@
-[gd_scene format=3 uid="uid://burlywq8ry0kp"]
+[gd_scene load_steps=2 format=3 uid="uid://burlywq8ry0kp"]
 
-[node name="Main" type="Node2D"]
+[ext_resource type="PackedScene" uid="uid://bmkxrdnpbve4d" path="res://src/ball.tscn" id="1_rj6ou"]
+
+[node name="Main" type="Node"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0064121, 0.0780598, 0.130739, 1)
+
+[node name="Ball" parent="." instance=ExtResource("1_rj6ou")]
