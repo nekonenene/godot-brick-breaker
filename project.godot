@@ -11,13 +11,15 @@ config_version=5
 [application]
 
 config/name="Brick Breaker Sample"
+run/main_scene="res://src/ball.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [display]
 
-window/size/viewport_width=512
-window/size/viewport_height=300
+window/size/viewport_width=1600
+window/size/viewport_height=900
+window/stretch/mode="canvas_items"
 
 [dotnet]
 
