@@ -10,7 +10,12 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	pass
+	if Input.is_action_pressed("move_right"):
+		move_and_collide(Vector2(8, 0))
+		target_x = position.x
+	if Input.is_action_pressed("move_left"):
+		move_and_collide(Vector2(-8, 0))
+		target_x = position.x
 
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
