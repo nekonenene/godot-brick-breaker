@@ -1,5 +1,10 @@
 # Brick Breaker Sample
 
+🚧 開発中...
+
+https://nekonenene.github.io/godot-brick-breaker から遊べます。
+
+
 参考記事:
 
 * https://2dgames.jp/godot4-break-out/
