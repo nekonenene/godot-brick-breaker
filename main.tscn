@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://burlywq8ry0kp"]
+[gd_scene load_steps=3 format=3 uid="uid://burlywq8ry0kp"]
 
 [ext_resource type="PackedScene" uid="uid://bmkxrdnpbve4d" path="res://src/ball.tscn" id="1_rj6ou"]
+[ext_resource type="PackedScene" uid="uid://bkjq15jvc33kc" path="res://src/wall.tscn" id="2_n3omf"]
 
 [node name="Main" type="Node"]
 
@@ -12,4 +13,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0064121, 0.0780598, 0.130739, 1)
 
+[node name="Wall" parent="." instance=ExtResource("2_n3omf")]
+
 [node name="Ball" parent="." instance=ExtResource("1_rj6ou")]
+position = Vector2(193, 222)

@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://bkjq15jvc33kc"]
+
+[ext_resource type="Texture2D" uid="uid://b5gs70c0ddr6x" path="res://assets/images/Block.png" id="1_s8ix4"]
+
+[node name="Wall" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 5
+position = Vector2(400, 19)
+scale = Vector2(2.67, 0.410112)
+texture = ExtResource("1_s8ix4")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(19.25, 618.375)
+scale = Vector2(0.131667, 13.0702)
+texture = ExtResource("1_s8ix4")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(781, 618)
+scale = Vector2(0.131667, 13.0702)
+texture = ExtResource("1_s8ix4")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, 1, 0, 1200, 39, 1200, 39, 37, 761, 37, 761, 1200, 761, 1200, 800, 1200, 800, 0)
