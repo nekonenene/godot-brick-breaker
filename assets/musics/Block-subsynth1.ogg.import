@@ -15,5 +15,5 @@ dest_files=["res://.godot/imported/Block-subsynth1.ogg-a94446e7b732be80f648549ea
 loop=true
 loop_offset=0.0
 bpm=130.0
-beat_count=0
+beat_count=16
 bar_beats=4

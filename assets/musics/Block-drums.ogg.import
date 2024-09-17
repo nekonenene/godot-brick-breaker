@@ -15,5 +15,5 @@ dest_files=["res://.godot/imported/Block-drums.ogg-9ac2496579a72400acf3e30a16632
 loop=true
 loop_offset=0.0
 bpm=130.0
-beat_count=0
+beat_count=16
 bar_beats=4

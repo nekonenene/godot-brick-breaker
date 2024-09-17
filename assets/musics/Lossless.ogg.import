@@ -15,5 +15,5 @@ dest_files=["res://.godot/imported/Lossless.ogg-c18692134f043758b44b0c599ec47939
 loop=true
 loop_offset=0.0
 bpm=130.0
-beat_count=0
+beat_count=16
 bar_beats=4
