@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://burlywq8ry0kp"]
+[gd_scene load_steps=21 format=3 uid="uid://burlywq8ry0kp"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_ilqt1"]
 [ext_resource type="PackedScene" uid="uid://bmkxrdnpbve4d" path="res://src/ball.tscn" id="1_rj6ou"]
@@ -17,6 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://dfi54x8mqsjup" path="res://assets/musics/Buster1-pattern3.ogg" id="15_uwtgj"]
 [ext_resource type="AudioStream" uid="uid://2bbekm46jcyy" path="res://assets/musics/Buster1-pattern4.ogg" id="16_034bh"]
 [ext_resource type="AudioStream" uid="uid://dvnfsytgr3c0t" path="res://assets/musics/Buster1-pattern5.ogg" id="17_m73cm"]
+[ext_resource type="Script" path="res://music.gd" id="18_gm7iy"]
 
 [sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_8umn2"]
 stream_count = 5
@@ -288,3 +289,4 @@ position = Vector2(193, 222)
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamInteractive_vrqwy")
+script = ExtResource("18_gm7iy")
