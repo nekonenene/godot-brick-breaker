@@ -27,29 +27,29 @@ var etc_vol = ZeroVolDb
 func _ready() -> void:
 	interactive_stream = self.stream as AudioStreamInteractive
 	sync_stream = interactive_stream.get_clip_stream(0)
-	set0()
+	init_music_level()
 
 	var change_sec = 18
 
-	set1()
+	set_music_by_level(1)
 	await get_tree().create_timer(change_sec).timeout
-	set2()
+	set_music_by_level(2)
 	await get_tree().create_timer(change_sec).timeout
-	set3()
+	set_music_by_level(3)
 	await get_tree().create_timer(change_sec).timeout
-	set4()
+	set_music_by_level(4)
 	await get_tree().create_timer(change_sec).timeout
-	set5()
+	set_music_by_level(5)
 	await get_tree().create_timer(change_sec).timeout
-	set7()
+	set_music_by_level(7)
 	await get_tree().create_timer(change_sec).timeout
-	set6()
+	set_music_by_level(6)
 	await get_tree().create_timer(change_sec).timeout
-	set1()
+	set_music_by_level(1)
 	await get_tree().create_timer(change_sec).timeout
-	set4()
+	set_music_by_level(4)
 	await get_tree().create_timer(change_sec).timeout
-	set7()
+	set_music_by_level(7)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -106,26 +106,22 @@ func _change_all_vol_linear(
 	bd_snare_vol = bd_snare
 	etc_vol = etc
 
-func set0():
+func init_music_level():
 	_set_all_vol(MaxVolDb)
 
-func set1(sec = 2.0):
-	_change_all_vol_linear(sec, MaxVolDb)
-
-func set2(sec = 2.0):
-	_change_all_vol_linear(sec, MaxVolDb, MidVolDb)
-
-func set3(sec = 2.0):
-	_change_all_vol_linear(sec, MaxVolDb, MidVolDb, MidVolDb)
-
-func set4(sec = 2.0):
-	_change_all_vol_linear(sec, MaxVolDb, MaxVolDb, MaxVolDb)
-
-func set5(sec = 2.0):
-	_change_all_vol_linear(sec, MaxVolDb, MaxVolDb, MaxVolDb, MaxVolDb)
-
-func set6(sec = 2.0):
-	_change_all_vol_linear(sec, MaxVolDb, MaxVolDb, MaxVolDb, ZeroVolDb, MaxVolDb)
-
-func set7(sec = 2.0):
-	_change_all_vol_linear(sec, MaxVolDb, MaxVolDb, MaxVolDb, MaxVolDb, MaxVolDb)
+func set_music_by_level(level: int, sec = 2.0):
+	match level:
+		1:
+			_change_all_vol_linear(sec, MaxVolDb)
+		2:
+			_change_all_vol_linear(sec, MaxVolDb, MidVolDb)
+		3:
+			_change_all_vol_linear(sec, MaxVolDb, MidVolDb, MidVolDb)
+		4:
+			_change_all_vol_linear(sec, MaxVolDb, MaxVolDb, MaxVolDb)
+		5:
+			_change_all_vol_linear(sec, MaxVolDb, MaxVolDb, MaxVolDb, MaxVolDb)
+		6:
+			_change_all_vol_linear(sec, MaxVolDb, MaxVolDb, MaxVolDb, ZeroVolDb, MaxVolDb)
+		7:
+			_change_all_vol_linear(sec, MaxVolDb, MaxVolDb, MaxVolDb, MaxVolDb, MaxVolDb)
