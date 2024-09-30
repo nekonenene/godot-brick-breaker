@@ -4,7 +4,7 @@
 // Incrementing CACHE_VERSION will kick off the install event and force
 // previously cached resources to be updated from the network.
 /** @type {string} */
-const CACHE_VERSION = '1726588671|55809629331';
+const CACHE_VERSION = '1727720878|6456583309';
 /** @type {string} */
 const CACHE_PREFIX = 'Brick Breaker Sa-sw-cache-';
 const CACHE_NAME = CACHE_PREFIX + CACHE_VERSION;
