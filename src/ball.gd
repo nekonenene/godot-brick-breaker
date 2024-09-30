@@ -1,5 +1,9 @@
 extends CharacterBody2D
 
+signal wall_hit
+signal paddle_hit
+signal block_hit
+
 var speed
 
 # Called when the node enters the scene tree for the first time.
@@ -19,14 +23,17 @@ func _process(delta: float) -> void:
 			# 壁に当たったら反射
 			velocity = velocity.bounce(collision.get_normal())
 			reset_speed()
+			wall_hit.emit()
 		elif collider.name == "Paddle":
 			# パドルに当たったら反射
 			velocity = velocity.bounce(collision.get_normal())
 			reset_speed()
+			paddle_hit.emit()
 		elif collider.is_in_group("Blocks"):
 			# ブロックに当たったら反射
 			velocity = velocity.bounce(collision.get_normal())
 			reset_speed()
+			block_hit.emit()
 			collider.queue_free()
 
 	# 画面外に出ないように反転させる
