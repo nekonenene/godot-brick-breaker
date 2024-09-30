@@ -12,16 +12,22 @@ func _process(delta: float) -> void:
 	var collision = move_and_collide(velocity * delta * speed)
 
 	if collision:
-		print("I collided with ", collision.get_collider().name)
+		var collider = collision.get_collider()
+		print("I collided with ", collider.name)
 
-		if collision.get_collider().name == "Wall":
+		if collider.name == "Wall":
 			# 壁に当たったら反射
 			velocity = velocity.bounce(collision.get_normal())
 			reset_speed()
-		elif collision.get_collider().name == "Paddle":
+		elif collider.name == "Paddle":
 			# パドルに当たったら反射
 			velocity = velocity.bounce(collision.get_normal())
 			reset_speed()
+		elif collider.is_in_group("Blocks"):
+			# ブロックに当たったら反射
+			velocity = velocity.bounce(collision.get_normal())
+			reset_speed()
+			collider.queue_free()
 
 	# 画面外に出ないように反転させる
 	if position.x < 0 and velocity.x < 0 or position.x > get_viewport_rect().size.x and velocity.x > 0:
