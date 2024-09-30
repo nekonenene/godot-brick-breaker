@@ -1,9 +1,10 @@
-[gd_scene load_steps=21 format=3 uid="uid://burlywq8ry0kp"]
+[gd_scene load_steps=22 format=3 uid="uid://burlywq8ry0kp"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_ilqt1"]
 [ext_resource type="PackedScene" uid="uid://bmkxrdnpbve4d" path="res://src/ball.tscn" id="1_rj6ou"]
 [ext_resource type="PackedScene" uid="uid://bkjq15jvc33kc" path="res://src/wall.tscn" id="2_n3omf"]
 [ext_resource type="PackedScene" uid="uid://cria07a5tc6m6" path="res://src/paddle.tscn" id="3_c161j"]
+[ext_resource type="PackedScene" uid="uid://bkbknjcip6p6d" path="res://src/level1.tscn" id="3_i707a"]
 [ext_resource type="AudioStream" uid="uid://b5cqilq87gsjg" path="res://assets/musics/Buster1-MainSynth.ogg" id="5_2ee3a"]
 [ext_resource type="AudioStream" uid="uid://c52xdtvdh25vb" path="res://assets/musics/Lossless.ogg" id="5_y0fqb"]
 [ext_resource type="AudioStream" uid="uid://bufpmuusy6p1e" path="res://assets/musics/Buster1-HiHat.ogg" id="6_lo3sn"]
@@ -28,9 +29,9 @@ stream_1/volume = 0.0
 stream_2/stream = ExtResource("7_6svux")
 stream_2/volume = 0.0
 stream_3/stream = ExtResource("8_skvxw")
-stream_3/volume = 0.0
+stream_3/volume = -54.0
 stream_4/stream = ExtResource("9_gji4w")
-stream_4/volume = 0.0
+stream_4/volume = -60.0
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_vrqwy"]
 clip_count = 9
@@ -281,11 +282,13 @@ color = Color(0.0064121, 0.0780598, 0.130739, 1)
 
 [node name="Wall" parent="." instance=ExtResource("2_n3omf")]
 
+[node name="Level1" parent="." instance=ExtResource("3_i707a")]
+
 [node name="Paddle" parent="." instance=ExtResource("3_c161j")]
 position = Vector2(389, 1090)
 
 [node name="Ball" parent="." instance=ExtResource("1_rj6ou")]
-position = Vector2(193, 222)
+position = Vector2(276, 859)
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamInteractive_vrqwy")
