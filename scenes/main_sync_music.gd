@@ -72,6 +72,7 @@ func _process(_delta: float) -> void:
 		# Compensate for output latency
 		time -= AudioServer.get_output_latency()
 		var beat_count = int(time / BeatPerSec)
+		@warning_ignore("INTEGER_DIVISION")
 		music_bar = int(beat_count / 4)
 		music_beat = beat_count % 4
 		#print("bar:", music_bar, ", beat:", music_beat)
