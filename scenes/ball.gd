@@ -10,7 +10,7 @@ var speed
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	reset_speed()
-	velocity = Vector2(randf_range(-1, 1), randf_range(-1, 1))
+	velocity = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
 	adjust_velocity()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
