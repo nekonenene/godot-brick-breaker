@@ -11,7 +11,7 @@ var speed
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	reset_speed()
-	velocity = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
+	velocity = Vector2(randf_range(-1, 1), randf_range(-1, -0.1)).normalized()
 	adjust_velocity()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -31,7 +31,6 @@ func _physics_process(delta: float) -> void:
 			# パドルに当たったら反射
 			velocity = velocity.bounce(collision.get_normal())
 			adjust_velocity()
-			reset_speed()
 			paddle_hit.emit()
 		elif collider.is_in_group("Blocks"):
 			# ブロックに当たったら反射
@@ -43,11 +42,9 @@ func _physics_process(delta: float) -> void:
 	# 画面外に出ないように反転させる
 	if position.x < 0 and velocity.x < 0 or position.x > get_viewport_rect().size.x and velocity.x > 0:
 		velocity.x *= -1
-		reset_speed()
 		edge_hit.emit()
 	if position.y < 0 and velocity.y < 0 or position.y > get_viewport_rect().size.y and velocity.y > 0:
 		velocity.y *= -1
-		reset_speed()
 		edge_hit.emit()
 
 func reset_speed() -> void:
@@ -64,7 +61,7 @@ func adjust_velocity() -> void:
 		var rotate_degree = randf_range(5, 10)
 		velocity = velocity.rotated(deg_to_rad(rotate_degree))
 		print("adusted degree:", rad_to_deg(velocity.angle()))
-	elif 89 <= abs(degree) && abs(degree) <= 91:
+	elif 88 <= abs(degree) && abs(degree) <= 92:
 		var rotate_degree = randf_range(-2, 2)
 		velocity = velocity.rotated(deg_to_rad(rotate_degree))
 		print("adusted degree:", rad_to_deg(velocity.angle()))

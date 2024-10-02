@@ -25,6 +25,7 @@ var etc_vol = ZeroVolDb
 
 var music_bar: int = 0 # 小節
 var music_beat: int = 0 # 拍（0-3）
+var sec_for_next_bar: float = 0 # 次の小節までの秒数
 
 var is_waiting_failed_music = false # 失敗音楽の再生待ちか
 var is_waiting_end_music = false # ゲームクリア音楽の再生待ちか
@@ -38,27 +39,26 @@ func _ready() -> void:
 
 	playback = get_stream_playback()
 
-	var change_sec = 18
-
-	set_music_by_level(1)
-	await get_tree().create_timer(change_sec).timeout
-	set_music_by_level(2)
-	await get_tree().create_timer(change_sec).timeout
-	set_music_by_level(3)
-	await get_tree().create_timer(change_sec).timeout
-	set_music_by_level(4)
-	await get_tree().create_timer(change_sec).timeout
-	set_music_by_level(5)
-	await get_tree().create_timer(change_sec).timeout
-	set_music_by_level(7)
-	await get_tree().create_timer(change_sec).timeout
-	set_music_by_level(6)
-	await get_tree().create_timer(change_sec).timeout
-	set_music_by_level(1)
-	await get_tree().create_timer(change_sec).timeout
-	set_music_by_level(4)
-	await get_tree().create_timer(change_sec).timeout
-	set_music_by_level(7)
+	# var change_sec = 18
+	# set_music_by_level(1)
+	# await get_tree().create_timer(change_sec).timeout
+	# set_music_by_level(2)
+	# await get_tree().create_timer(change_sec).timeout
+	# set_music_by_level(3)
+	# await get_tree().create_timer(change_sec).timeout
+	# set_music_by_level(4)
+	# await get_tree().create_timer(change_sec).timeout
+	# set_music_by_level(5)
+	# await get_tree().create_timer(change_sec).timeout
+	# set_music_by_level(7)
+	# await get_tree().create_timer(change_sec).timeout
+	# set_music_by_level(6)
+	# await get_tree().create_timer(change_sec).timeout
+	# set_music_by_level(1)
+	# await get_tree().create_timer(change_sec).timeout
+	# set_music_by_level(4)
+	# await get_tree().create_timer(change_sec).timeout
+	# set_music_by_level(7)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -70,13 +70,16 @@ func _process(_delta: float) -> void:
 		var beat_count = int(time / BeatPerSec)
 		@warning_ignore("INTEGER_DIVISION")
 		music_bar = int(beat_count / 4)
+		sec_for_next_bar = (music_bar + 1) * (4 * BeatPerSec) - time
+		#print("sec_for_next_bar: ", sec_for_next_bar)
+		var is_beat_changed = music_beat != beat_count % 4
 		music_beat = beat_count % 4
 		#print("bar:", music_bar, ", beat:", music_beat)
 
-		if is_waiting_failed_music and music_beat == 0:
+		if is_waiting_failed_music and is_beat_changed and music_beat == 0:
 			stop()
 			$MainFailedMusic.play()
-		elif is_waiting_end_music and music_beat == 0:
+		elif is_waiting_end_music and is_beat_changed and music_beat == 0:
 			stop()
 			$MainEndMusic.play()
 
