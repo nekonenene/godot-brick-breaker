@@ -1,6 +1,5 @@
 extends Control
 
-var main_scene = preload("res://main.tscn").instantiate()
 var is_started = false
 
 # Called when the node enters the scene tree for the first time.
@@ -23,7 +22,7 @@ func start_process() -> void:
 	is_started = true
 
 	$TransitionRect.visible = true
-	var transition_sec = 0.5
+	var transition_sec = 0.4
 	var tween = get_tree().create_tween()
 	# トランジション用の黒い四角のアルファ値を徐々に上げる
 	tween.tween_property($TransitionRect, "color:a", 1, transition_sec)
@@ -31,7 +30,5 @@ func start_process() -> void:
 	tween.parallel().tween_property($AudioStreamPlayer, "volume_db", -80, transition_sec)
 	await tween.finished
 
-	# メインシーンを追加
-	get_tree().root.add_child(main_scene)
-	# 現在のシーンをメモリから解放
-	queue_free()
+	# トランジションの終わりとともにゲームへ移動
+	get_tree().change_scene_to_file("res://main.tscn")
