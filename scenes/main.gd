@@ -68,13 +68,12 @@ func calculate_tension() -> void:
 	tension = min(tension, 5)
 
 	# パドルに10回以上当てていると緊張度が上がる
-	if paddle_hit_combo >= 10:
-		if tension == 4 or tension == 5:
-			tension += 2
-		else:
-			tension += 1
-			if paddle_hit_combo >= 20:
-				tension += 1
+	if paddle_hit_combo >= 10 and tension == 5:
+		tension = 7
+	elif paddle_hit_combo >= 20:
+		tension += 2
+	elif paddle_hit_combo >= 10:
+		tension += 1
 
 	game_tension = tension
 	$MainSyncMusic.set_music_by_level(tension)
@@ -95,7 +94,7 @@ func _on_ball_block_hit() -> void:
 		game_state = GameState.GAME_CLEAR
 		$MainSyncMusic.is_waiting_end_music = true
 		var tween = get_tree().create_tween()
-		tween.tween_property($Ball, "speed", 100, $MainSyncMusic.sec_for_next_bar)
+		tween.tween_property($Ball, "speed", $Ball.initial_speed, $MainSyncMusic.sec_for_next_bar)
 		tween.tween_property($Ball, "speed", 0, $MainSyncMusic.BeatPerSec * 8)
 
 func _on_ball_paddle_hit() -> void:
