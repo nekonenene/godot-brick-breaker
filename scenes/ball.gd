@@ -27,7 +27,6 @@ func _process(delta: float) -> void:
 			adjust_velocity()
 			wall_hit.emit()
 		elif collider.name == "Paddle":
-			print("spped:", speed)
 			# パドルに当たったら反射
 			velocity = velocity.bounce(collision.get_normal())
 			adjust_velocity()
@@ -51,7 +50,7 @@ func _process(delta: float) -> void:
 func reset_speed() -> void:
 	speed = initial_speed
 
-# 進む角度が真横や真上にならないように調整する
+# 進む角度が真横や真上にならないように調整（ゲームが停滞しないように）
 func adjust_velocity() -> void:
 	var degree = rad_to_deg(velocity.angle())
 	if (-10 < degree && degree <= 0) || (170 < degree && degree <= 180):
@@ -62,5 +61,7 @@ func adjust_velocity() -> void:
 		var rotate_degree = randf_range(5, 10)
 		velocity = velocity.rotated(deg_to_rad(rotate_degree))
 		print("adusted degree:", rad_to_deg(velocity.angle()))
-	elif abs(degree) == 90:
-		velocity = velocity.rotated(deg_to_rad(0.1))
+	elif 89 <= abs(degree) && abs(degree) <= 91:
+		var rotate_degree = randf_range(-2, 2)
+		velocity = velocity.rotated(deg_to_rad(rotate_degree))
+		print("adusted degree:", rad_to_deg(velocity.angle()))
