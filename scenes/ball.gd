@@ -3,6 +3,7 @@ extends CharacterBody2D
 signal wall_hit
 signal paddle_hit
 signal block_hit
+signal edge_hit
 
 var initial_speed = 600
 var speed
@@ -43,9 +44,11 @@ func _physics_process(delta: float) -> void:
 	if position.x < 0 and velocity.x < 0 or position.x > get_viewport_rect().size.x and velocity.x > 0:
 		velocity.x *= -1
 		reset_speed()
+		edge_hit.emit()
 	if position.y < 0 and velocity.y < 0 or position.y > get_viewport_rect().size.y and velocity.y > 0:
 		velocity.y *= -1
 		reset_speed()
+		edge_hit.emit()
 
 func reset_speed() -> void:
 	speed = initial_speed

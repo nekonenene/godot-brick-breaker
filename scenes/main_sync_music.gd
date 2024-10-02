@@ -1,5 +1,7 @@
 extends AudioStreamPlayer
 
+const BPM: float = 128
+const BeatPerSec: float = 60.0 / BPM
 const ZeroVolDb = -60.0
 const MidVolDb = -12.0
 const MaxVolDb = 0.0
@@ -12,9 +14,8 @@ enum {
 	PAD_BASS_SE,
 }
 
-var interactive_stream: AudioStreamInteractive
 var sync_stream: AudioStreamSynchronized
-var playback: AudioStreamPlaybackInteractive
+var playback: AudioStreamPlaybackSynchronized
 
 var synth_vol = MaxVolDb
 var hihat_vol = ZeroVolDb
@@ -22,56 +23,65 @@ var loop_vol = ZeroVolDb
 var bd_snare_vol = ZeroVolDb
 var etc_vol = ZeroVolDb
 
+var music_bar: int = 0 # 小節
+var music_beat: int = 0 # 拍（0-3）
+
+var is_waiting_failed_music = false # 失敗音楽の再生待ちか
+var is_waiting_end_music = false # ゲームクリア音楽の再生待ちか
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
-	#interactive_stream = self.stream as AudioStreamInteractive
-	#sync_stream = interactive_stream.get_clip_stream(0)
-#
-	#init_music_level()
-	#play()
-#
-	#playback = get_stream_playback()
-#
-	#var change_sec = 18
-#
-	##await get_tree().create_timer(change_sec).timeout
-	##playback.switch_to_clip_by_name("failed")
-	##await get_tree().create_timer(change_sec).timeout
-	##playback.switch_to_clip_by_name("main")
-	#set_music_by_level(1)
+	sync_stream = self.stream
+
+	init_music_level()
+	play()
+
+	playback = get_stream_playback()
+
+	var change_sec = 18
+
 	#await get_tree().create_timer(change_sec).timeout
-	#set_music_by_level(2)
+	#playback.switch_to_clip_by_name("failed")
 	#await get_tree().create_timer(change_sec).timeout
-	#set_music_by_level(3)
-	#await get_tree().create_timer(change_sec).timeout
-	#set_music_by_level(4)
-	#await get_tree().create_timer(change_sec).timeout
-	#set_music_by_level(5)
-	#await get_tree().create_timer(change_sec).timeout
-	#set_music_by_level(7)
-	#await get_tree().create_timer(change_sec).timeout
-	#set_music_by_level(6)
-	#await get_tree().create_timer(change_sec).timeout
-	#set_music_by_level(1)
-	#await get_tree().create_timer(change_sec).timeout
-	#set_music_by_level(4)
-	#await get_tree().create_timer(change_sec).timeout
-	#set_music_by_level(7)
+	#playback.switch_to_clip_by_name("main")
+	set_music_by_level(1)
+	await get_tree().create_timer(change_sec).timeout
+	set_music_by_level(2)
+	await get_tree().create_timer(change_sec).timeout
+	set_music_by_level(3)
+	await get_tree().create_timer(change_sec).timeout
+	set_music_by_level(4)
+	await get_tree().create_timer(change_sec).timeout
+	set_music_by_level(5)
+	await get_tree().create_timer(change_sec).timeout
+	set_music_by_level(7)
+	await get_tree().create_timer(change_sec).timeout
+	set_music_by_level(6)
+	await get_tree().create_timer(change_sec).timeout
+	set_music_by_level(1)
+	await get_tree().create_timer(change_sec).timeout
+	set_music_by_level(4)
+	await get_tree().create_timer(change_sec).timeout
+	set_music_by_level(7)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	# if playback and is_playing():
-	# 	# Ref: https://docs.godotengine.org/en/stable/tutorials/audio/sync_with_audio.html
-	# 	var time = get_playback_position() + AudioServer.get_time_since_last_mix()
-	# 	# Compensate for output latency
-	# 	time -= AudioServer.get_output_latency()
-	# 	# 本当は現在のクリップの再生秒数が表示されるのだが、
-	# 	# Interactive の中に Synchronized を入れる作りにすると
-	# 	# get_playback_position() が 0 になるというバグがあり正しく計測されない
-	# 	print("Time is: ", time)
-	pass
+	if playback and is_playing():
+		# Ref: https://docs.godotengine.org/en/stable/tutorials/audio/sync_with_audio.html
+		var time = get_playback_position() + AudioServer.get_time_since_last_mix()
+		# Compensate for output latency
+		time -= AudioServer.get_output_latency()
+		var beat_count = int(time / BeatPerSec)
+		music_bar = int(beat_count / 4)
+		music_beat = beat_count % 4
+		#print("bar:", music_bar, ", beat:", music_beat)
+
+		if is_waiting_failed_music and music_beat == 0:
+			stop()
+			$MainFailedMusic.play()
+		elif is_waiting_end_music and music_beat == 0:
+			stop()
+			$MainEndMusic.play()
 
 func _change_vol_linear(idx, current_vol, target_vol, sec = 2.0):
 	var times = 10

@@ -1,0 +1,20 @@
+[gd_resource type="AudioStreamSynchronized" load_steps=6 format=3 uid="uid://djt356l48msdq"]
+
+[ext_resource type="AudioStream" uid="uid://b5cqilq87gsjg" path="res://assets/musics/Buster1-MainSynth.ogg" id="1_3arog"]
+[ext_resource type="AudioStream" uid="uid://bufpmuusy6p1e" path="res://assets/musics/Buster1-HiHat.ogg" id="2_kofnm"]
+[ext_resource type="AudioStream" uid="uid://bc0pw50bxank5" path="res://assets/musics/Buster1-BDSnare.ogg" id="3_fhse5"]
+[ext_resource type="AudioStream" uid="uid://b8no1v0c2md8q" path="res://assets/musics/Buster1-MainLoop.ogg" id="4_nu51o"]
+[ext_resource type="AudioStream" uid="uid://b6duhv4gw0q1d" path="res://assets/musics/Buster1-PadBassSE.ogg" id="5_edel3"]
+
+[resource]
+stream_count = 5
+stream_0/stream = ExtResource("1_3arog")
+stream_0/volume = 0.0
+stream_1/stream = ExtResource("2_kofnm")
+stream_1/volume = 0.0
+stream_2/stream = ExtResource("3_fhse5")
+stream_2/volume = 0.0
+stream_3/stream = ExtResource("4_nu51o")
+stream_3/volume = 0.0
+stream_4/stream = ExtResource("5_edel3")
+stream_4/volume = 0.0
