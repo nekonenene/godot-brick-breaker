@@ -1,4 +1,3 @@
-@tool
 extends AudioStreamPlayer
 
 const ZeroVolDb = -60.0
