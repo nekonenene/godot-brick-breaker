@@ -77,10 +77,10 @@ stream = SubResource("AudioStreamInteractive_vrqwy")
 script = ExtResource("18_gm7iy")
 
 [node name="PaddleHitSE" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("20_k7rfs")
+stream = ExtResource("20_cl184")
 
 [node name="BlockHitSE" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("20_cl184")
+stream = ExtResource("20_k7rfs")
 
 [node name="WallHitSE" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("24_7xfsr")

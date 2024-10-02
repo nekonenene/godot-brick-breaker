@@ -28,7 +28,7 @@ func _input(event: InputEvent) -> void:
 			GameManager.to_title_scene()
 
 func _on_ball_block_hit() -> void:
-	$PaddleHitSE.play()
+	$BlockHitSE.play()
 
 	remaining_blocks_count -= 1
 	if remaining_blocks_count == 0:
@@ -37,7 +37,7 @@ func _on_ball_block_hit() -> void:
 		$MainSyncMusic.is_waiting_end_music = true
 
 func _on_ball_paddle_hit() -> void:
-	$BlockHitSE.play()
+	$PaddleHitSE.play()
 
 func _on_ball_wall_hit() -> void:
 	#$WallHitSE.play()
