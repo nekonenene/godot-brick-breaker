@@ -161,10 +161,17 @@ text = "Game created by nekonenene, 2024"
 label_settings = SubResource("LabelSettings_eijs5")
 horizontal_alignment = 1
 
-[node name="FontLicense" type="Label" parent="Licenses"]
+[node name="FontLicense1" type="Label" parent="Licenses"]
 layout_mode = 2
-text = "Font \"Lilita One\" © 2011 Juan Montoreano, licensed under
-SIL Open Font License 1.1 (https://openfontlicense.org)"
+text = "Font \"Lilita One\" © 2011 Juan Montoreano,
+licensed under SIL Open Font License 1.1 (https://openfontlicense.org)"
+label_settings = SubResource("LabelSettings_vaoew")
+horizontal_alignment = 1
+
+[node name="FontLicense2" type="Label" parent="Licenses"]
+layout_mode = 2
+text = "Font \"Archivo Black\" © 2017 The Archivo Black Project Authors,
+licensed under SIL Open Font License 1.1 (https://openfontlicense.org)"
 label_settings = SubResource("LabelSettings_vaoew")
 horizontal_alignment = 1
 
