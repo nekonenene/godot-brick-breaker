@@ -3,7 +3,7 @@ extends CharacterBody2D
 var initial_position: Vector2
 var dragging: bool
 var target_x: float = -1 # このX座標に向かって常にパドルは移動する
-var distance_by_keyboard: float = 20 # キーボード操作の場合の移動幅
+var distance_by_keyboard: float = 16 # キーボード操作の場合の移動幅
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
