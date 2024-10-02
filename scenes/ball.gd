@@ -3,16 +3,16 @@ extends CharacterBody2D
 signal wall_hit
 signal paddle_hit
 signal block_hit
-signal edge_hit
+signal missed
 
+var initial_position: Vector2
 var initial_speed = 600
 var speed
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	reset_speed()
-	velocity = Vector2(randf_range(-1, 1), randf_range(-1, -0.1)).normalized()
-	adjust_velocity()
+	initial_position = position
+	reset_position()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
@@ -39,16 +39,20 @@ func _physics_process(delta: float) -> void:
 			block_hit.emit()
 			collider.queue_free()
 
-	# 画面外に出ないように反転させる
-	if position.x < 0 and velocity.x < 0 or position.x > get_viewport_rect().size.x and velocity.x > 0:
-		velocity.x *= -1
-		edge_hit.emit()
-	if position.y < 0 and velocity.y < 0 or position.y > get_viewport_rect().size.y and velocity.y > 0:
-		velocity.y *= -1
-		edge_hit.emit()
+	# 画面外に出たらミス（画面端より少し上で判定）
+	if position.y > get_viewport_rect().size.y - 20:
+		missed.emit()
+	# # 画面外に出ないように反転させる
+	# if position.x < 0 and velocity.x < 0 or position.x > get_viewport_rect().size.x and velocity.x > 0:
+	# 	velocity.x *= -1
+	# if position.y < 0 and velocity.y < 0 or position.y > get_viewport_rect().size.y and velocity.y > 0:
+	# 	velocity.y *= -1
 
-func reset_speed() -> void:
-	speed = initial_speed
+func reset_position() -> void:
+	position = initial_position
+	speed = 0
+	velocity = Vector2(randf_range(-1, 1), randf_range(-1, -0.1)).normalized()
+	adjust_velocity()
 
 # 進む角度が真横や真上にならないように調整（ゲームが停滞しないように）
 func adjust_velocity() -> void:

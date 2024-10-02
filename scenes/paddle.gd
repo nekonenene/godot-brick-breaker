@@ -42,3 +42,7 @@ func _input(event):
 	elif event is InputEventMouseMotion and dragging:
 		#print("mouse dragged to ", event.position)
 		target_x = event.position.x
+
+func reset_position() -> void:
+	position = initial_position
+	target_x = -1

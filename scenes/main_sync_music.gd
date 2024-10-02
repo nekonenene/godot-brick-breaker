@@ -76,7 +76,7 @@ func _process(_delta: float) -> void:
 		music_beat = beat_count % 4
 		#print("bar:", music_bar, ", beat:", music_beat)
 
-		if is_waiting_failed_music and is_beat_changed and music_beat == 0:
+		if is_waiting_failed_music and is_beat_changed:
 			stop()
 			$MainFailedMusic.play()
 		elif is_waiting_end_music and is_beat_changed and music_beat == 0:

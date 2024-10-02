@@ -60,7 +60,7 @@ color = Color(0.0064121, 0.0780598, 0.130739, 1)
 position = Vector2(389, 1090)
 
 [node name="Ball" parent="." instance=ExtResource("1_rj6ou")]
-position = Vector2(276, 859)
+position = Vector2(389, 1058)
 
 [node name="MainSyncMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_f4tgh")
@@ -86,7 +86,7 @@ stream = ExtResource("20_k7rfs")
 stream = ExtResource("24_7xfsr")
 
 [connection signal="block_hit" from="Ball" to="." method="_on_ball_block_hit"]
-[connection signal="edge_hit" from="Ball" to="." method="_on_ball_edge_hit"]
+[connection signal="missed" from="Ball" to="." method="_on_ball_missed"]
 [connection signal="paddle_hit" from="Ball" to="." method="_on_ball_paddle_hit"]
 [connection signal="wall_hit" from="Ball" to="." method="_on_ball_wall_hit"]
 [connection signal="finished" from="MainSyncMusic/MainFailedMusic" to="." method="_on_main_failed_music_finished"]

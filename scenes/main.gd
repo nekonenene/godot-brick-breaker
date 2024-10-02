@@ -24,13 +24,26 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	pass
+	if game_state == GameState.WAIT_SHOOTING:
+		$Ball.position.x = $Paddle.position.x
 
 func _input(event: InputEvent) -> void:
+	if game_state == GameState.WAIT_SHOOTING:
+		if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
+			shoot_ball()
+		elif event is InputEventKey and event.is_action_pressed("press_accept_key"):
+			shoot_ball()
+
 	if event is InputEventKey:
 		if event.is_action_pressed("press_esc_key"):
 			# タイトルに戻る
 			GameManager.to_title_scene()
+
+func shoot_ball() -> void:
+	if game_state != GameState.WAIT_SHOOTING:
+		return
+	game_state = GameState.PLAYING
+	calculate_tension()
 
 # ゲームの緊張度。音楽とボールの速度に影響する
 func calculate_tension() -> void:
@@ -38,7 +51,7 @@ func calculate_tension() -> void:
 	var remaining_rate: float = float(remaining_blocks_count) / initial_blocks_count
 
 	# 残りブロック数が少ないほど緊張度が上がる
-	if remaining_blocks_count <= 0.05:
+	if remaining_rate <= 0.1:
 		tension = 5
 	elif remaining_rate <= 0.3:
 		tension = 4
@@ -51,7 +64,7 @@ func calculate_tension() -> void:
 
 	# ブロックヒットの最大コンボ数に応じて緊張度を加算。ただし5より大きくはならない
 	@warning_ignore("INTEGER_DIVISION")
-	tension += max_block_hit_combo / 6
+	tension += max_block_hit_combo / 5
 	tension = min(tension, 5)
 
 	# パドルに10回以上当てていると緊張度が上がる
@@ -60,13 +73,17 @@ func calculate_tension() -> void:
 			tension += 2
 		else:
 			tension += 1
+			if paddle_hit_combo >= 20:
+				tension += 1
 
 	game_tension = tension
 	$MainSyncMusic.set_music_by_level(tension)
 	var speedup_base = $Ball.initial_speed / 10
-	$Ball.speed = $Ball.initial_speed + tension * (randf_range(speedup_base * 0.8, speedup_base * 1.2)) + 2 * paddle_hit_combo
+	$Ball.speed = $Ball.initial_speed + tension * (randf_range(speedup_base * 0.8, speedup_base * 1.2)) + 2 * paddle_hit_combo + 10 * max_block_hit_combo
 
 func _on_ball_block_hit() -> void:
+	if game_state != GameState.PLAYING:
+		return
 	$BlockHitSE.play()
 	remaining_blocks_count -= 1
 	block_hit_combo += 1
@@ -78,10 +95,12 @@ func _on_ball_block_hit() -> void:
 		game_state = GameState.GAME_CLEAR
 		$MainSyncMusic.is_waiting_end_music = true
 		var tween = get_tree().create_tween()
-		tween.tween_property($Ball, "speed", 50, $MainSyncMusic.sec_for_next_bar)
-		tween.tween_property($Ball, "speed", 0, $MainSyncMusic.BeatPerSec * 6)
+		tween.tween_property($Ball, "speed", 100, $MainSyncMusic.sec_for_next_bar)
+		tween.tween_property($Ball, "speed", 0, $MainSyncMusic.BeatPerSec * 8)
 
 func _on_ball_paddle_hit() -> void:
+	if game_state != GameState.PLAYING:
+		return
 	$PaddleHitSE.play()
 	paddle_hit_combo += 1
 	block_hit_combo = 0
@@ -92,7 +111,9 @@ func _on_ball_wall_hit() -> void:
 	pass
 
 # ボールが落ちたときの処理
-func _on_ball_edge_hit() -> void:
+func _on_ball_missed() -> void:
+	if game_state != GameState.PLAYING:
+		return
 	game_state = GameState.MISSING_BALL
 	$MainSyncMusic.is_waiting_failed_music = true
 	paddle_hit_combo = 0
@@ -102,7 +123,10 @@ func _on_ball_edge_hit() -> void:
 func _on_main_failed_music_finished() -> void:
 	game_state = GameState.WAIT_SHOOTING
 	$MainSyncMusic.is_waiting_failed_music = false
+	$MainSyncMusic.init_music_level()
 	$MainSyncMusic.play()
+	$Paddle.reset_position()
+	$Ball.reset_position()
 
 func _on_main_end_music_finished() -> void:
 	GameManager.to_title_scene()
