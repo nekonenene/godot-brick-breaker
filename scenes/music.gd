@@ -14,6 +14,7 @@ enum {
 
 var interactive_stream: AudioStreamInteractive
 var sync_stream: AudioStreamSynchronized
+var playback: AudioStreamPlaybackInteractive
 
 var synth_vol = MaxVolDb
 var hihat_vol = ZeroVolDb
@@ -26,10 +27,18 @@ var etc_vol = ZeroVolDb
 func _ready() -> void:
 	interactive_stream = self.stream as AudioStreamInteractive
 	sync_stream = interactive_stream.get_clip_stream(0)
+
 	init_music_level()
+	play()
+
+	playback = get_stream_playback()
 
 	var change_sec = 18
 
+	#await get_tree().create_timer(change_sec).timeout
+	#playback.switch_to_clip_by_name("failed")
+	#await get_tree().create_timer(change_sec).timeout
+	#playback.switch_to_clip_by_name("main")
 	set_music_by_level(1)
 	await get_tree().create_timer(change_sec).timeout
 	set_music_by_level(2)
@@ -52,8 +61,16 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
+	# if playback and is_playing():
+	# 	# Ref: https://docs.godotengine.org/en/stable/tutorials/audio/sync_with_audio.html
+	# 	var time = get_playback_position() + AudioServer.get_time_since_last_mix()
+	# 	# Compensate for output latency
+	# 	time -= AudioServer.get_output_latency()
+	# 	# 本当は現在のクリップの再生秒数が表示されるのだが、
+	# 	# Interactive の中に Synchronized を入れる作りにすると
+	# 	# get_playback_position() が 0 になるというバグがあり正しく計測されない
+	# 	print("Time is: ", time)
 	pass
-
 
 func _change_vol_linear(idx, current_vol, target_vol, sec = 2.0):
 	var times = 10
