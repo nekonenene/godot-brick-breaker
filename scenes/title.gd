@@ -31,4 +31,4 @@ func start_process() -> void:
 	await tween.finished
 
 	# トランジションの終わりとともにゲームへ移動
-	get_tree().change_scene_to_file("res://scenes/main.tscn")
+	GameManager.to_main_scene()
