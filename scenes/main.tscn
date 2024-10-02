@@ -1,10 +1,10 @@
 [gd_scene load_steps=28 format=3 uid="uid://burlywq8ry0kp"]
 
-[ext_resource type="Script" path="res://main.gd" id="1_ilqt1"]
-[ext_resource type="PackedScene" uid="uid://bmkxrdnpbve4d" path="res://src/ball.tscn" id="1_rj6ou"]
-[ext_resource type="PackedScene" uid="uid://bkjq15jvc33kc" path="res://src/wall.tscn" id="2_n3omf"]
-[ext_resource type="PackedScene" uid="uid://cria07a5tc6m6" path="res://src/paddle.tscn" id="3_c161j"]
-[ext_resource type="PackedScene" uid="uid://bkbknjcip6p6d" path="res://src/level1.tscn" id="3_i707a"]
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_ilqt1"]
+[ext_resource type="PackedScene" uid="uid://bmkxrdnpbve4d" path="res://scenes/ball.tscn" id="1_rj6ou"]
+[ext_resource type="PackedScene" uid="uid://bkjq15jvc33kc" path="res://scenes/wall.tscn" id="2_n3omf"]
+[ext_resource type="PackedScene" uid="uid://cria07a5tc6m6" path="res://scenes/paddle.tscn" id="3_c161j"]
+[ext_resource type="PackedScene" uid="uid://bkbknjcip6p6d" path="res://scenes/level1.tscn" id="3_i707a"]
 [ext_resource type="AudioStream" uid="uid://b5cqilq87gsjg" path="res://assets/musics/Buster1-MainSynth.ogg" id="5_2ee3a"]
 [ext_resource type="AudioStream" uid="uid://c52xdtvdh25vb" path="res://assets/musics/Lossless.ogg" id="5_y0fqb"]
 [ext_resource type="AudioStream" uid="uid://bufpmuusy6p1e" path="res://assets/musics/Buster1-HiHat.ogg" id="6_lo3sn"]
@@ -18,26 +18,26 @@
 [ext_resource type="AudioStream" uid="uid://dfi54x8mqsjup" path="res://assets/musics/Buster1-pattern3.ogg" id="15_uwtgj"]
 [ext_resource type="AudioStream" uid="uid://2bbekm46jcyy" path="res://assets/musics/Buster1-pattern4.ogg" id="16_034bh"]
 [ext_resource type="AudioStream" uid="uid://dvnfsytgr3c0t" path="res://assets/musics/Buster1-pattern5.ogg" id="17_m73cm"]
-[ext_resource type="Script" path="res://music.gd" id="18_gm7iy"]
+[ext_resource type="Script" path="res://scenes/music.gd" id="18_gm7iy"]
 [ext_resource type="AudioStream" uid="uid://bt5mx205ptd3l" path="res://assets/musics/Collide1.wav" id="20_cl184"]
 [ext_resource type="AudioStream" uid="uid://b7ox02qtebt02" path="res://assets/musics/Collide2.wav" id="20_k7rfs"]
-[ext_resource type="Script" path="res://paddle_hit_se.gd" id="21_0k6yv"]
-[ext_resource type="Script" path="res://block_hit_se.gd" id="23_dfhkb"]
+[ext_resource type="Script" path="res://scenes/paddle_hit_se.gd" id="21_0k6yv"]
+[ext_resource type="Script" path="res://scenes/block_hit_se.gd" id="23_dfhkb"]
 [ext_resource type="AudioStream" uid="uid://1qr0d5n41r38" path="res://assets/musics/Collide2b.wav" id="24_7xfsr"]
-[ext_resource type="Script" path="res://wall_hit_se.gd" id="25_rvxwh"]
+[ext_resource type="Script" path="res://scenes/wall_hit_se.gd" id="25_rvxwh"]
 
 [sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_8umn2"]
 stream_count = 5
 stream_0/stream = ExtResource("5_2ee3a")
 stream_0/volume = 0.0
 stream_1/stream = ExtResource("6_lo3sn")
-stream_1/volume = -60.0
+stream_1/volume = 0.0
 stream_2/stream = ExtResource("7_6svux")
-stream_2/volume = -60.0
+stream_2/volume = 0.0
 stream_3/stream = ExtResource("8_skvxw")
-stream_3/volume = -60.0
+stream_3/volume = 0.0
 stream_4/stream = ExtResource("9_gji4w")
-stream_4/volume = -60.0
+stream_4/volume = -18.0
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_vrqwy"]
 clip_count = 9

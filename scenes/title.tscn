@@ -1,9 +1,9 @@
 [gd_scene load_steps=13 format=3 uid="uid://dxmb0ybjqbwkh"]
 
-[ext_resource type="Script" path="res://src/title.gd" id="1_77vgf"]
+[ext_resource type="Script" path="res://scenes/title.gd" id="1_77vgf"]
 [ext_resource type="FontFile" uid="uid://dc3mqujj2uc5q" path="res://assets/fonts/LilitaOne-Regular.ttf" id="2_rvbya"]
-[ext_resource type="StyleBox" uid="uid://bbj7b63if5kjt" path="res://src/GrayButton.tres" id="3_bp5rn"]
-[ext_resource type="StyleBox" uid="uid://bug3yqshwmo4e" path="res://src/WhiteButton.tres" id="4_jjbfd"]
+[ext_resource type="StyleBox" uid="uid://bbj7b63if5kjt" path="res://scenes/GrayButton.tres" id="3_bp5rn"]
+[ext_resource type="StyleBox" uid="uid://bug3yqshwmo4e" path="res://scenes/WhiteButton.tres" id="4_jjbfd"]
 [ext_resource type="Texture2D" uid="uid://iv7uxcosu348" path="res://assets/images/right.png" id="5_n3oj4"]
 [ext_resource type="AudioStream" uid="uid://b8no1v0c2md8q" path="res://assets/musics/Buster1-MainLoop.ogg" id="6_p6uc3"]
 
