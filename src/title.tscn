@@ -1,21 +1,21 @@
 [gd_scene load_steps=13 format=3 uid="uid://dxmb0ybjqbwkh"]
 
-[ext_resource type="Script" path="res://src/start_view.gd" id="1_75p6t"]
-[ext_resource type="FontFile" uid="uid://dc3mqujj2uc5q" path="res://assets/fonts/LilitaOne-Regular.ttf" id="1_j6877"]
-[ext_resource type="StyleBox" uid="uid://bug3yqshwmo4e" path="res://src/WhiteButton.tres" id="2_aiwdw"]
-[ext_resource type="Texture2D" uid="uid://iv7uxcosu348" path="res://assets/images/right.png" id="2_hxh2g"]
-[ext_resource type="StyleBox" uid="uid://bbj7b63if5kjt" path="res://src/GrayButton.tres" id="3_qhm6s"]
-[ext_resource type="AudioStream" uid="uid://b8no1v0c2md8q" path="res://assets/musics/Buster1-MainLoop.ogg" id="6_ovwim"]
+[ext_resource type="Script" path="res://src/title.gd" id="1_77vgf"]
+[ext_resource type="FontFile" uid="uid://dc3mqujj2uc5q" path="res://assets/fonts/LilitaOne-Regular.ttf" id="2_rvbya"]
+[ext_resource type="StyleBox" uid="uid://bbj7b63if5kjt" path="res://src/GrayButton.tres" id="3_bp5rn"]
+[ext_resource type="StyleBox" uid="uid://bug3yqshwmo4e" path="res://src/WhiteButton.tres" id="4_jjbfd"]
+[ext_resource type="Texture2D" uid="uid://iv7uxcosu348" path="res://assets/images/right.png" id="5_n3oj4"]
+[ext_resource type="AudioStream" uid="uid://b8no1v0c2md8q" path="res://assets/musics/Buster1-MainLoop.ogg" id="6_p6uc3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_sl07k"]
-font = ExtResource("1_j6877")
+font = ExtResource("2_rvbya")
 font_size = 96
 font_color = Color(0.91559, 0.682783, 0.886657, 1)
 outline_color = Color(0.337628, 0.156181, 0.323792, 1)
 shadow_color = Color(0.376471, 0.313726, 0.654902, 0.615686)
 
 [sub_resource type="Theme" id="Theme_n681m"]
-default_font = ExtResource("1_j6877")
+default_font = ExtResource("2_rvbya")
 default_font_size = 100
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aoa04"]
@@ -32,16 +32,16 @@ corner_radius_bottom_left = 12
 
 [sub_resource type="LabelSettings" id="LabelSettings_yfbpi"]
 line_spacing = 12.0
-font = ExtResource("1_j6877")
+font = ExtResource("2_rvbya")
 font_size = 50
 
 [sub_resource type="LabelSettings" id="LabelSettings_eijs5"]
 line_spacing = 12.0
-font = ExtResource("1_j6877")
+font = ExtResource("2_rvbya")
 font_size = 40
 
 [sub_resource type="LabelSettings" id="LabelSettings_vaoew"]
-font = ExtResource("1_j6877")
+font = ExtResource("2_rvbya")
 font_size = 20
 
 [node name="StartView" type="Control"]
@@ -51,7 +51,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_75p6t")
+script = ExtResource("1_77vgf")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -101,13 +101,13 @@ theme_override_colors/icon_pressed_color = Color(0.614439, 0.141355, 0.307965, 1
 theme_override_colors/icon_hover_color = Color(0.614439, 0.141355, 0.307965, 1)
 theme_override_colors/icon_hover_pressed_color = Color(0.614439, 0.141355, 0.307965, 1)
 theme_override_colors/icon_disabled_color = Color(0.614439, 0.141355, 0.307965, 1)
-theme_override_styles/focus = ExtResource("3_qhm6s")
-theme_override_styles/hover_pressed = ExtResource("2_aiwdw")
-theme_override_styles/hover = ExtResource("3_qhm6s")
-theme_override_styles/pressed = ExtResource("3_qhm6s")
-theme_override_styles/normal = ExtResource("2_aiwdw")
+theme_override_styles/focus = ExtResource("3_bp5rn")
+theme_override_styles/hover_pressed = ExtResource("4_jjbfd")
+theme_override_styles/hover = ExtResource("3_bp5rn")
+theme_override_styles/pressed = ExtResource("3_bp5rn")
+theme_override_styles/normal = ExtResource("4_jjbfd")
 text = "START"
-icon = ExtResource("2_hxh2g")
+icon = ExtResource("5_n3oj4")
 
 [node name="ControlsPanel" type="Panel" parent="."]
 layout_mode = 1
@@ -180,6 +180,6 @@ mouse_filter = 2
 color = Color(0, 0, 0, 0)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_ovwim")
+stream = ExtResource("6_p6uc3")
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
