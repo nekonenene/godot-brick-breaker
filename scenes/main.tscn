@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://scenes/main_sync_music.gd" id="7_2036g"]
 [ext_resource type="AudioStream" uid="uid://kq8ya0i45nei" path="res://assets/musics/Buster1-Failed.ogg" id="11_8cgkg"]
 [ext_resource type="AudioStream" uid="uid://y4kbcb0eumqh" path="res://assets/musics/Buster1-End.ogg" id="12_86o5q"]
-[ext_resource type="Script" path="res://scenes/music.gd" id="18_gm7iy"]
+[ext_resource type="Script" path="res://scenes/main_abandoned_music.gd" id="18_gm7iy"]
 [ext_resource type="AudioStream" uid="uid://bt5mx205ptd3l" path="res://assets/musics/Collide1.wav" id="20_cl184"]
 [ext_resource type="AudioStream" uid="uid://b7ox02qtebt02" path="res://assets/musics/Collide2.wav" id="20_k7rfs"]
 [ext_resource type="AudioStream" uid="uid://1qr0d5n41r38" path="res://assets/musics/Collide2b.wav" id="24_7xfsr"]
@@ -72,7 +72,7 @@ stream = ExtResource("11_8cgkg")
 [node name="MainEndMusic" type="AudioStreamPlayer" parent="MainSyncMusic"]
 stream = ExtResource("12_86o5q")
 
-[node name="Music" type="AudioStreamPlayer" parent="."]
+[node name="MainAbandonedMusic" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamInteractive_vrqwy")
 script = ExtResource("18_gm7iy")
 

@@ -40,10 +40,6 @@ func _ready() -> void:
 
 	var change_sec = 18
 
-	#await get_tree().create_timer(change_sec).timeout
-	#playback.switch_to_clip_by_name("failed")
-	#await get_tree().create_timer(change_sec).timeout
-	#playback.switch_to_clip_by_name("main")
 	set_music_by_level(1)
 	await get_tree().create_timer(change_sec).timeout
 	set_music_by_level(2)

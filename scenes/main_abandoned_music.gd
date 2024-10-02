@@ -1,3 +1,10 @@
+# もう使っていないのですが、参考に残しています
+#
+# Interactive Stream の中に Synchronized Stream を入れる作りにすると
+# get_playback_position() が常に 0 になるというバグがあったり
+# トランジションの「遷移元：次の小節」が機能しなかったりと、いろいろ問題が。
+#
+# 後者は https://github.com/godotengine/godot/issues/92453 にて報告されている
 extends AudioStreamPlayer
 
 const ZeroVolDb = -60.0
