@@ -1,13 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://dxmb0ybjqbwkh"]
+[gd_scene load_steps=13 format=3 uid="uid://dxmb0ybjqbwkh"]
 
+[ext_resource type="Script" path="res://src/start_view.gd" id="1_75p6t"]
 [ext_resource type="FontFile" uid="uid://dc3mqujj2uc5q" path="res://assets/fonts/LilitaOne-Regular.ttf" id="1_j6877"]
 [ext_resource type="StyleBox" uid="uid://bug3yqshwmo4e" path="res://src/WhiteButton.tres" id="2_aiwdw"]
 [ext_resource type="Texture2D" uid="uid://iv7uxcosu348" path="res://assets/images/right.png" id="2_hxh2g"]
 [ext_resource type="StyleBox" uid="uid://bbj7b63if5kjt" path="res://src/GrayButton.tres" id="3_qhm6s"]
+[ext_resource type="AudioStream" uid="uid://b8no1v0c2md8q" path="res://assets/musics/Buster1-MainLoop.ogg" id="6_ovwim"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_sl07k"]
 font = ExtResource("1_j6877")
-font_size = 88
+font_size = 96
 font_color = Color(0.91559, 0.682783, 0.886657, 1)
 outline_color = Color(0.337628, 0.156181, 0.323792, 1)
 shadow_color = Color(0.376471, 0.313726, 0.654902, 0.615686)
@@ -15,6 +17,23 @@ shadow_color = Color(0.376471, 0.313726, 0.654902, 0.615686)
 [sub_resource type="Theme" id="Theme_n681m"]
 default_font = ExtResource("1_j6877")
 default_font_size = 100
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aoa04"]
+bg_color = Color(1, 1, 1, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="LabelSettings" id="LabelSettings_yfbpi"]
+line_spacing = 12.0
+font = ExtResource("1_j6877")
+font_size = 50
 
 [sub_resource type="LabelSettings" id="LabelSettings_eijs5"]
 line_spacing = 12.0
@@ -32,6 +51,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_75p6t")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -44,14 +64,14 @@ color = Color(0.0064121, 0.0780598, 0.130739, 1)
 
 [node name="GameTitle" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -297.0
-offset_top = 100.0
-offset_right = 297.0
-offset_bottom = 192.0
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -480.0
+offset_bottom = -369.0
 grow_horizontal = 2
+grow_vertical = 2
 text = "IM Block Breaker"
 label_settings = SubResource("LabelSettings_sl07k")
 horizontal_alignment = 1
@@ -63,10 +83,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -287.5
-offset_top = -194.5
-offset_right = 287.5
-offset_bottom = 194.5
+offset_left = -287.0
+offset_top = -22.0
+offset_right = 288.0
+offset_bottom = 330.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_n681m")
@@ -89,31 +109,77 @@ theme_override_styles/normal = ExtResource("2_aiwdw")
 text = "START"
 icon = ExtResource("2_hxh2g")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="ControlsPanel" type="Panel" parent="."]
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -304.5
-offset_top = -182.0
-offset_right = 304.5
-offset_bottom = -73.0
+anchor_bottom = 0.5
+offset_left = -303.0
+offset_top = -283.0
+offset_right = 309.0
+offset_bottom = -90.0
 grow_horizontal = 2
-grow_vertical = 0
-theme_override_constants/separation = 12
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_aoa04")
+
+[node name="Controls" type="Label" parent="ControlsPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -247.5
+offset_top = -67.5
+offset_right = 247.5
+offset_bottom = 67.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Mouse: Click
+Keyboard: ← → Space"
+label_settings = SubResource("LabelSettings_yfbpi")
+horizontal_alignment = 1
+
+[node name="Licenses" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 432.0
+offset_bottom = 541.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
 alignment = 2
 
-[node name="Author" type="Label" parent="VBoxContainer"]
+[node name="Author" type="Label" parent="Licenses"]
 layout_mode = 2
 text = "Game created by nekonenene, 2024"
 label_settings = SubResource("LabelSettings_eijs5")
 horizontal_alignment = 1
 
-[node name="FontLicense" type="Label" parent="VBoxContainer"]
+[node name="FontLicense" type="Label" parent="Licenses"]
 layout_mode = 2
 text = "Font \"Lilita One\" © 2011 Juan Montoreano, licensed under
 SIL Open Font License 1.1 (https://openfontlicense.org)"
 label_settings = SubResource("LabelSettings_vaoew")
 horizontal_alignment = 1
+
+[node name="TransitionRect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_ovwim")
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
