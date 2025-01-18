@@ -1,0 +1,185 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8uwn6skclnfc"]
+
+[ext_resource type="PackedScene" uid="uid://cwoqw6pxswgdn" path="res://scenes/block.tscn" id="1_4tkq0"]
+
+[node name="Level1_Blocks" type="Node2D"]
+
+[node name="Block" parent="." instance=ExtResource("1_4tkq0")]
+position = Vector2(147, 113)
+
+[node name="Block2" parent="." instance=ExtResource("1_4tkq0")]
+position = Vector2(275, 113)
+
+[node name="Block3" parent="." instance=ExtResource("1_4tkq0")]
+position = Vector2(403, 113)
+
+[node name="Block4" parent="." instance=ExtResource("1_4tkq0")]
+position = Vector2(531, 113)
+
+[node name="Block5" parent="." instance=ExtResource("1_4tkq0")]
+position = Vector2(659, 113)
+
+[node name="Block6" parent="." instance=ExtResource("1_4tkq0")]
+position = Vector2(147, 161)
+
+[node name="Block7" parent="." instance=ExtResource("1_4tkq0")]
+position = Vector2(275, 161)
+
+[node name="Block8" parent="." instance=ExtResource("1_4tkq0")]
+position = Vector2(403, 161)
+
+[node name="Block9" parent="." instance=ExtResource("1_4tkq0")]
+position = Vector2(531, 161)
+
+[node name="Block10" parent="." instance=ExtResource("1_4tkq0")]
+position = Vector2(659, 161)
+
+[node name="Block11" parent="." instance=ExtResource("1_4tkq0")]
+position = Vector2(147, 209)
+
+[node name="Block12" parent="." instance=ExtResource("1_4tkq0")]
+position = Vector2(275, 209)
+
+[node name="Block13" parent="." instance=ExtResource("1_4tkq0")]
+position = Vector2(403, 209)
+
+[node name="Block14" parent="." instance=ExtResource("1_4tkq0")]
+position = Vector2(531, 209)
+
+[node name="Block15" parent="." instance=ExtResource("1_4tkq0")]
+position = Vector2(659, 209)
+
+[node name="Block16" parent="." instance=ExtResource("1_4tkq0")]
+position = Vector2(147, 257)
+
+[node name="Block17" parent="." instance=ExtResource("1_4tkq0")]
+position = Vector2(275, 257)
+
+[node name="Block18" parent="." instance=ExtResource("1_4tkq0")]
+position = Vector2(403, 257)
+
+[node name="Block19" parent="." instance=ExtResource("1_4tkq0")]
+position = Vector2(531, 257)
+
+[node name="Block20" parent="." instance=ExtResource("1_4tkq0")]
+position = Vector2(659, 257)
+
+[node name="Block21" parent="." instance=ExtResource("1_4tkq0")]
+position = Vector2(147, 305)
+
+[node name="Block22" parent="." instance=ExtResource("1_4tkq0")]
+position = Vector2(275, 305)
+
+[node name="Block23" parent="." instance=ExtResource("1_4tkq0")]
+position = Vector2(403, 305)
+
+[node name="Block24" parent="." instance=ExtResource("1_4tkq0")]
+position = Vector2(531, 305)
+
+[node name="Block25" parent="." instance=ExtResource("1_4tkq0")]
+position = Vector2(659, 305)
+
+[node name="Block26" parent="." instance=ExtResource("1_4tkq0")]
+position = Vector2(147, 353)
+
+[node name="Block27" parent="." instance=ExtResource("1_4tkq0")]
+position = Vector2(275, 353)
+
+[node name="Block28" parent="." instance=ExtResource("1_4tkq0")]
+position = Vector2(403, 353)
+
+[node name="Block29" parent="." instance=ExtResource("1_4tkq0")]
+position = Vector2(531, 353)
+
+[node name="Block30" parent="." instance=ExtResource("1_4tkq0")]
+position = Vector2(659, 353)
+
+[node name="Block31" parent="." instance=ExtResource("1_4tkq0")]
+position = Vector2(147, 401)
+
+[node name="Block32" parent="." instance=ExtResource("1_4tkq0")]
+position = Vector2(275, 401)
+
+[node name="Block33" parent="." instance=ExtResource("1_4tkq0")]
+position = Vector2(403, 401)
+
+[node name="Block34" parent="." instance=ExtResource("1_4tkq0")]
+position = Vector2(531, 401)
+
+[node name="Block35" parent="." instance=ExtResource("1_4tkq0")]
+position = Vector2(659, 401)
+
+[node name="Block36" parent="." instance=ExtResource("1_4tkq0")]
+position = Vector2(147, 449)
+
+[node name="Block37" parent="." instance=ExtResource("1_4tkq0")]
+position = Vector2(275, 449)
+
+[node name="Block38" parent="." instance=ExtResource("1_4tkq0")]
+position = Vector2(403, 449)
+
+[node name="Block39" parent="." instance=ExtResource("1_4tkq0")]
+position = Vector2(531, 449)
+
+[node name="Block40" parent="." instance=ExtResource("1_4tkq0")]
+position = Vector2(659, 449)
+
+[node name="Block41" parent="." instance=ExtResource("1_4tkq0")]
+position = Vector2(147, 497)
+
+[node name="Block42" parent="." instance=ExtResource("1_4tkq0")]
+position = Vector2(275, 497)
+
+[node name="Block43" parent="." instance=ExtResource("1_4tkq0")]
+position = Vector2(403, 497)
+
+[node name="Block44" parent="." instance=ExtResource("1_4tkq0")]
+position = Vector2(531, 497)
+
+[node name="Block45" parent="." instance=ExtResource("1_4tkq0")]
+position = Vector2(659, 497)
+
+[node name="Block46" parent="." instance=ExtResource("1_4tkq0")]
+position = Vector2(147, 545)
+
+[node name="Block47" parent="." instance=ExtResource("1_4tkq0")]
+position = Vector2(275, 545)
+
+[node name="Block48" parent="." instance=ExtResource("1_4tkq0")]
+position = Vector2(403, 545)
+
+[node name="Block49" parent="." instance=ExtResource("1_4tkq0")]
+position = Vector2(531, 545)
+
+[node name="Block50" parent="." instance=ExtResource("1_4tkq0")]
+position = Vector2(659, 545)
+
+[node name="Block51" parent="." instance=ExtResource("1_4tkq0")]
+position = Vector2(147, 593)
+
+[node name="Block52" parent="." instance=ExtResource("1_4tkq0")]
+position = Vector2(275, 593)
+
+[node name="Block53" parent="." instance=ExtResource("1_4tkq0")]
+position = Vector2(403, 593)
+
+[node name="Block54" parent="." instance=ExtResource("1_4tkq0")]
+position = Vector2(531, 593)
+
+[node name="Block55" parent="." instance=ExtResource("1_4tkq0")]
+position = Vector2(659, 593)
+
+[node name="Block56" parent="." instance=ExtResource("1_4tkq0")]
+position = Vector2(147, 641)
+
+[node name="Block57" parent="." instance=ExtResource("1_4tkq0")]
+position = Vector2(275, 641)
+
+[node name="Block58" parent="." instance=ExtResource("1_4tkq0")]
+position = Vector2(403, 641)
+
+[node name="Block59" parent="." instance=ExtResource("1_4tkq0")]
+position = Vector2(531, 641)
+
+[node name="Block60" parent="." instance=ExtResource("1_4tkq0")]
+position = Vector2(659, 641)
